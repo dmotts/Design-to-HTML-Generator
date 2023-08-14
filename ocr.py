@@ -2,7 +2,7 @@ import easyocr
 
 class OCRProcessor:
     def __init__(self):
-        self.reader = easyocr.REader(["en"])
+        self.reader = easyocr.Reader(["en"])
 
     def extract_layout(self, img):
         result = self.reader.readText(img)
@@ -11,7 +11,7 @@ class OCRProcessor:
 
         for original_list, key, _ in result:
             values = [coord for sublist in original_list for coord in sublist]
-            formmated_dict = {key: values}
+            formatted_dict = {key: values}
             output_list.append(formatted_dict)
 
         return output_list
